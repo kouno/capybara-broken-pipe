@@ -54,6 +54,15 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.before(:suite) do
+    # See: http://stackoverflow.com/questions/15823177/continuous-integration-running-parallel-tests-suites-that-require-xvfb
+    if RUBY_PLATFORM.match(/linux/)
+      require 'headless'
+      headless_server = Headless.new(:reuse => false)
+      headless_server.start
+    end
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

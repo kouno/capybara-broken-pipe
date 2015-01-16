@@ -44,4 +44,5 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'pry'
+  gem 'headless'
 end
